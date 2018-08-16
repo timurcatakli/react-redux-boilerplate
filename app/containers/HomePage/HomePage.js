@@ -7,10 +7,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
+import { Button } from 'antd';
 import ReposList from 'components/ReposList';
 import './style.scss';
 
-export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export default class HomePage extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   /**
    * when initial state username is not null, submit the form to load repos
    */
@@ -32,18 +34,28 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
       <article>
         <Helmet>
           <title>Home Page</title>
-          <meta name="description" content="A React.js Boilerplate application homepage" />
+          <meta
+            name="description"
+            content="A React.js Boilerplate application homepage"
+          />
         </Helmet>
         <div className="home-page">
           <section className="centered">
             <h2>Start your next react project in seconds</h2>
-            <p>A minimal <i>React-Redux</i> boilerplate with all the best practices</p>
+            <p>
+              A minimal <i>React-Redux</i> boilerplate with all the best
+              practices
+            </p>
+            <Button type="primary">Primary</Button>
+    <Button>Default</Button>
+    <Button type="dashed">Dashed</Button>
+    <Button type="danger">Danger</Button>
           </section>
           <section>
             <h2>Try me!</h2>
             <form onSubmit={this.props.onSubmitForm}>
               <label htmlFor="username">
-              Show Github repositories by
+                Show Github repositories by
                 <span className="at-prefix">@</span>
                 <input
                   id="username"
@@ -64,14 +76,8 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
 
 HomePage.propTypes = {
   loading: PropTypes.bool,
-  error: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.bool,
-  ]),
-  repos: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.bool,
-  ]),
+  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  repos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   onSubmitForm: PropTypes.func,
   username: PropTypes.string,
   onChangeUsername: PropTypes.func,

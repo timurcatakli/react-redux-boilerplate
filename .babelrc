@@ -9,6 +9,15 @@
     "react",
     "stage-0"
   ],
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": "css"
+      }
+    ],
+  ],
   "env": {
     "production": {
       "only": ["app"],
