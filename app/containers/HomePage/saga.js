@@ -13,6 +13,7 @@ import { makeSelectUsername } from 'containers/HomePage/selectors';
  * Github repos request/response handler
  */
 export function* getRepos() {
+  console.log('GREETINGS FROM GET REPOS SAGA')
   // Select username from store
   const username = yield select(makeSelectUsername());
   const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
@@ -26,6 +27,10 @@ export function* getRepos() {
   }
 }
 
+export function* workerSaga() {
+  console.log('GREETINGS FROM WORKER SAGA')
+}
+
 /**
  * Root saga manages watcher lifecycle
  */
@@ -35,4 +40,5 @@ export default function* githubData() {
   // It returns task descriptor (just like fork) so we can continue execution
   // It will be cancelled automatically on component unmount
   yield takeLatest(LOAD_REPOS, getRepos);
+  yield takeLatest('HELLO', workerSaga);
 }

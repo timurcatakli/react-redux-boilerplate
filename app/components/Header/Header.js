@@ -1,26 +1,52 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Banner from './images/banner.jpg';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { Menu, Icon } from 'antd';
 import './style.scss';
 
-class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class Header extends Component {
+  state = {
+    current: this.props.location.pathname,
+  };
+
+  handleClick = (e) => {
+    this.setState({
+      current: e.key,
+    });
+    this.props.history.push(e.key);
+  };
+
   render() {
     return (
-      <div className="header">
-        <a href="https://twitter.com/flexdinesh">
-          <img src={Banner} alt="react-redux-boilerplate - Logo" />
-        </a>
-        <div className="nav-bar">
-          <Link className="router-link" to="/">
-            Home
-          </Link>
-          <Link className="router-link" to="/features">
-            Features
-          </Link>
-        </div>
-      </div>
+      <Menu
+        onClick={this.handleClick}
+        selectedKeys={[this.state.current]}
+        mode="horizontal"
+      >
+        <Menu.Item key="/">
+          <Icon type="home" />Home
+        </Menu.Item>
+        <Menu.Item key="/features">
+          <Icon type="appstore" />Features
+        </Menu.Item>
+        <Menu.Item key="/gallery">
+          <Icon type="appstore" />Gallery
+        </Menu.Item>
+        <Menu.Item key="/code-generator">
+          <Icon type="appstore" />Navigation Two
+        </Menu.Item>
+      </Menu>
     );
   }
 }
 
-export default Header;
+Header.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default withRouter(Header);

@@ -47,9 +47,9 @@ export default class HomePage extends React.PureComponent {
               practices
             </p>
             <Button type="primary">Primary</Button>
-    <Button>Default</Button>
-    <Button type="dashed">Dashed</Button>
-    <Button type="danger">Danger</Button>
+            <Button>Default</Button>
+            <Button type="dashed">Dashed</Button>
+            <Button type="danger">Danger</Button>
           </section>
           <section>
             <h2>Try me!</h2>

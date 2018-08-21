@@ -56,6 +56,5 @@ export default function configureStore(initialState = {}, history) {
       store.dispatch({ type: '@@REDUCER_INJECTED' });
     });
   }
-
   return store;
 }

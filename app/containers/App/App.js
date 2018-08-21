@@ -12,6 +12,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
+import GalleryPage from 'containers/GalleryPage/Loadable';
+import CodeGeneratorPage from 'containers/CodeGeneratorPage';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -29,6 +31,8 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route path="/features" component={FeaturePage} />
+      <Route path="/gallery" component={GalleryPage} />
+      <Route path="/code-generator" component={CodeGeneratorPage} />
       <Route path="" component={NotFoundPage} />
     </Switch>
     <Footer />
